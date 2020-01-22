@@ -1,0 +1,6 @@
+C6#Premio a recibiar cada acertante 6 aciertos,320
+C5+#Premio a recibiar cada acertante 5 aciertos + complemento,240
+C5#Premio a recibiar cada acertante 5 aciertos,120
+C4#Premio a recibiar cada acertante 4 aciertos,64
+C3#Premio a recibiar cada acertante 3 aciertos,40
+CR#Premio a recibiar cada acertante reintegro,16
