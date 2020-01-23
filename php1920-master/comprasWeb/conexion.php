@@ -10,9 +10,9 @@ $conn = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
 		die("Error conexión: " . mysqli_connect_error());
 	}*/
 	
-$servername = "localhost";
+$servername = "10.129.15.249";
 $username = "root";
-$password = "rootroot";
+$password = "";
 $dbname="comprasweb";
 	
 try {
