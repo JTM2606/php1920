@@ -78,7 +78,7 @@ function insertarCategoria($conn){
 		$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 		
-		$sql = "INSERT INTO categoria (ID_CATEGORIA, NOMBRE) VALUES ('$id_categoria', '$nombre_categoria')";
+		$sql = "INSERT INTO CATEGORIA (ID_CATEGORIA, NOMBRE) VALUES ('$id_categoria', '$nombre_categoria')";
 		$conn->exec($sql);
 		echo "New record created successfully";
     }

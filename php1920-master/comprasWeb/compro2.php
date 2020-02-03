@@ -86,7 +86,7 @@ function obtenerProductos($conn) {
 	
 	try {
 		$producto=array();
-		$stmt = $conn->prepare("SELECT NOMBRE FROM producto");
+		$stmt = $conn->prepare("SELECT NOMBRE FROM PRODUCTO");
 		$stmt->execute();
 		
 		$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -133,7 +133,7 @@ function comprarProducto($conn) {
 		$_SESSION['fecha_compra']=$fecha_compra;
 		
 		$nombre_producto=$_POST['producto'];
-		$stmt = $conn->prepare("SELECT ID_PRODUCTO FROM producto WHERE NOMBRE='$nombre_producto'");
+		$stmt = $conn->prepare("SELECT ID_PRODUCTO FROM PRODUCTO WHERE NOMBRE='$nombre_producto'");
 		$stmt->execute();
 		$stmt->setFetchMode(PDO::FETCH_ASSOC);
 		
@@ -152,7 +152,7 @@ function comprarProducto($conn) {
 		//$conn->exec($sql);
 		echo "New record created successfully";
 		
-		$stmt = $conn->prepare("SELECT NUM_ALMACEN,CANTIDAD FROM almacena WHERE ID_PRODUCTO='$id_producto' AND CANTIDAD=(SELECT MAX(CANTIDAD) FROM almacena WHERE id_producto=$id_producto)");
+		$stmt = $conn->prepare("SELECT NUM_ALMACEN,CANTIDAD FROM ALMACENA WHERE ID_PRODUCTO='$id_producto' AND CANTIDAD=(SELECT MAX(CANTIDAD) FROM almacena WHERE id_producto=$id_producto)");
 
 		$stmt->execute();
 		$stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -166,7 +166,7 @@ function comprarProducto($conn) {
 		
 		
 		if ($cantidad_almacen>=$cantidad_compra) {
-			$sql = "UPDATE almacena SET CANTIDAD=CANTIDAD-$cantidad_compra WHERE NUM_ALMACEN=$num_almacen AND ID_PRODUCTO='$id_producto'";
+			$sql = "UPDATE ALMACENA SET CANTIDAD=CANTIDAD-$cantidad_compra WHERE NUM_ALMACEN=$num_almacen AND ID_PRODUCTO='$id_producto'";
 		} else {
 			throw new PDOException('CANTIDAD EXCESIVA');
 		}

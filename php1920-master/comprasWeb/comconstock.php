@@ -72,7 +72,7 @@ function obtenerProductos($conn) {
 	
 	try {
 		$producto=array();
-		$stmt = $conn->prepare("SELECT NOMBRE FROM producto");
+		$stmt = $conn->prepare("SELECT NOMBRE FROM PRODUCTO");
 		$stmt->execute();
 		
 		$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -100,7 +100,7 @@ function listarStock($conn) {
 		$nombre_producto=$_POST['producto'];
 		
 		$id_producto=null;
-		$stmt = $conn->prepare("SELECT ID_PRODUCTO FROM producto WHERE NOMBRE='$nombre_producto'");
+		$stmt = $conn->prepare("SELECT ID_PRODUCTO FROM PRODUCTO WHERE NOMBRE='$nombre_producto'");
 		$stmt->execute();
 		
 		$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -109,7 +109,7 @@ function listarStock($conn) {
 			$id_producto=$row["ID_PRODUCTO"];
 		}
 		
-$stmt = $conn->prepare("SELECT ID_PRODUCTO,CANTIDAD,NUM_ALMACEN FROM almacena where ID_PRODUCTO='$id_producto'");
+$stmt = $conn->prepare("SELECT ID_PRODUCTO,CANTIDAD,NUM_ALMACEN FROM ALMACENA where ID_PRODUCTO='$id_producto'");
 		$stmt->execute();
 		
 		$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);

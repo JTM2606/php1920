@@ -72,7 +72,7 @@ function obtenerAlmacenes($conn) {
 	
 	try {
 		$almacen=array();
-		$stmt = $conn->prepare("SELECT NUM_ALMACEN FROM almacen");
+		$stmt = $conn->prepare("SELECT NUM_ALMACEN FROM ALMACEN");
 		$stmt->execute();
 		
 		$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -109,7 +109,7 @@ function listarProductos($conn) {
 			$id_producto[]=$row["ID_PRODUCTO"];
 		}*/
 		
-	$stmt = $conn->prepare("SELECT producto.*,almacena.CANTIDAD FROM producto,almacena where producto.ID_PRODUCTO=almacena.ID_PRODUCTO AND NUM_ALMACEN='$num_almacen'");
+	$stmt = $conn->prepare("SELECT PRODUCTO.*,ALMACENA.CANTIDAD FROM PRODUCTO,ALMACENA where PRODUCTO.ID_PRODUCTO=ALMACENA.ID_PRODUCTO AND NUM_ALMACEN='$num_almacen'");
 		$stmt->execute();
 		
 		$stmt->setFetchMode(PDO::FETCH_ASSOC);

@@ -83,7 +83,7 @@ function altaAlmacen($conn){
 	
 		$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		
-		$stmt = $conn->prepare("SELECT max(NUM_ALMACEN) as MAXIMO from almacen");
+		$stmt = $conn->prepare("SELECT MAX(NUM_ALMACEN) as MAXIMO from ALMACEN");
 		$stmt->execute();
 		// set the resulting array to associative
 		$cod=0;
@@ -96,7 +96,7 @@ function altaAlmacen($conn){
 		
 				
 		$cod=$cod+10;
-		$sql = "INSERT INTO almacen (NUM_ALMACEN, LOCALIDAD) VALUES ('$cod', '$localidad')";
+		$sql = "INSERT INTO ALMACEN (NUM_ALMACEN, LOCALIDAD) VALUES ('$cod', '$localidad')";
 		$conn->exec($sql);
 				
 			

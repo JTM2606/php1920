@@ -91,7 +91,7 @@ function altaCliente($conn) {
 		$nombre=null;
 		$apellido=null;
 		
-		$stmt = $conn->prepare("SELECT NOMBRE,APELLIDO FROM cliente WHERE NIF='$nif'");
+		$stmt = $conn->prepare("SELECT NOMBRE,APELLIDO FROM CLIENTE WHERE NIF='$nif'");
 		$stmt->execute();
 		
 		$stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -128,7 +128,7 @@ function obtenerNIFS($conn) {
 	
 	try {
 		$nif=array();
-		$stmt = $conn->prepare("SELECT NIF FROM cliente");
+		$stmt = $conn->prepare("SELECT NIF FROM CLIENTE");
 		$stmt->execute();
 		
 		$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);

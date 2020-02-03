@@ -78,7 +78,7 @@ function obtenerNIFS($conn) {
 	
 	try {
 		$nif=array();
-		$stmt = $conn->prepare("SELECT NIF FROM cliente");
+		$stmt = $conn->prepare("SELECT NIF FROM CLIENTE");
 		$stmt->execute();
 		
 		$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -119,8 +119,8 @@ function listarCompras($conn) {
 		/*$stmt = $conn->prepare("SELECT producto.ID_PRODUCTO,producto.NOMBRE,producto.PRECIO,compra.UNIDADES,compra.FECHA_COMPRA
 							FROM producto,compra WHERE producto.ID_PRODUCTO=compra.ID_PRODUCTO AND compra.NIF=$nif AND FECHA_COMPRA>=$fecha_i AND FECHA_COMPRA<=$fecha_d");
 		*/
-		$stmt = $conn->prepare("SELECT producto.ID_PRODUCTO,producto.NOMBRE,producto.PRECIO,compra.UNIDADES,compra.FECHA_COMPRA
-							FROM producto,compra WHERE producto.ID_PRODUCTO=compra.ID_PRODUCTO AND compra.NIF='$nif' AND FECHA_COMPRA>='$fecha_i' AND FECHA_COMPRA<='$fecha_d'");
+		$stmt = $conn->prepare("SELECT PRODUCTO.ID_PRODUCTO,PRODUCTO.NOMBRE,PRODUCTO.PRECIO,COMPRA.UNIDADES,COMPRA.FECHA_COMPRA
+							FROM PRODUCTO,COMPRA WHERE PRODUCTO.ID_PRODUCTO=COMPRA.ID_PRODUCTO AND COMPRA.NIF='$nif' AND FECHA_COMPRA>='$fecha_i' AND FECHA_COMPRA<='$fecha_d'");
 		$stmt->execute();
 		
 		$stmt->setFetchMode(PDO::FETCH_ASSOC);

@@ -82,7 +82,7 @@ function obtenerProductos($conn) {
 	
 	try {
 		$producto=array();
-		$stmt = $conn->prepare("SELECT NOMBRE FROM producto");
+		$stmt = $conn->prepare("SELECT NOMBRE FROM PRODUCTO");
 		$stmt->execute();
 		
 		$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -108,7 +108,7 @@ function obtenerAlmacenes($conn) {
 	
 	try {
 		$almacen=array();
-		$stmt = $conn->prepare("SELECT NUM_ALMACEN FROM almacen");
+		$stmt = $conn->prepare("SELECT NUM_ALMACEN FROM ALMACEN");
 		$stmt->execute();
 		
 		$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -139,7 +139,7 @@ function almacena($conn) {
 		
 		
 		$nombre_producto=$_POST['producto'];
-		$stmt = $conn->prepare("SELECT ID_PRODUCTO FROM producto WHERE NOMBRE='$nombre_producto'");
+		$stmt = $conn->prepare("SELECT ID_PRODUCTO FROM PRODUCTO WHERE NOMBRE='$nombre_producto'");
 		$stmt->execute();
 		$stmt->setFetchMode(PDO::FETCH_ASSOC);
 		
@@ -150,7 +150,7 @@ function almacena($conn) {
 		$num_almacen=$_POST['almacen'];
 		$cantidad=$_POST['cantidad'];
 		
-		$sql = "INSERT INTO almacena (NUM_ALMACEN,ID_PRODUCTO,CANTIDAD) VALUES ($num_almacen,'$id_producto',$cantidad)";
+		$sql = "INSERT INTO ALMACENA (NUM_ALMACEN,ID_PRODUCTO,CANTIDAD) VALUES ($num_almacen,'$id_producto',$cantidad)";
 
 		// use exec() because no results are returned
 		$conn->exec($sql);

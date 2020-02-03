@@ -68,7 +68,7 @@ function comprarProducto($conn) {
 			$sql = "INSERT INTO COMPRA (NIF,ID_PRODUCTO,FECHA_COMPRA,UNIDADES) VALUES ('$nif','$id_producto','$fecha_compra',$unidades)";
 			$conn->exec($sql);
 			
-			$stmt = $conn->prepare("SELECT NUM_ALMACEN,CANTIDAD FROM almacena WHERE ID_PRODUCTO='$id_producto' AND CANTIDAD=(SELECT MAX(CANTIDAD) FROM almacena WHERE id_producto=$id_producto)");
+			$stmt = $conn->prepare("SELECT NUM_ALMACEN,CANTIDAD FROM ALMACENA WHERE ID_PRODUCTO='$id_producto' AND CANTIDAD=(SELECT MAX(CANTIDAD) FROM almacena WHERE id_producto=$id_producto)");
 
 			$stmt->execute();
 			$stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -79,7 +79,7 @@ function comprarProducto($conn) {
 			}
 			
 			if ($cantidad_almacen>=$cantidad_compra) {
-				$sql = "UPDATE almacena SET CANTIDAD=CANTIDAD-$cantidad_compra WHERE NUM_ALMACEN=$num_almacen AND ID_PRODUCTO='$id_producto'";
+				$sql = "UPDATE ALMACENA SET CANTIDAD=CANTIDAD-$cantidad_compra WHERE NUM_ALMACEN=$num_almacen AND ID_PRODUCTO='$id_producto'";
 			} else {
 				throw new PDOException('CANTIDAD EXCESIVA');
 			}

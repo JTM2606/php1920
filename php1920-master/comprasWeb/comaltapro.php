@@ -84,7 +84,7 @@ function obtenerCategoria($conn) {
 	
 	try {
 		$categoria=array();
-		$stmt = $conn->prepare("SELECT nombre FROM categoria");
+		$stmt = $conn->prepare("SELECT NOMBRE FROM CATEGORIA");
 		$stmt->execute();
 		
 		$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -116,7 +116,7 @@ function altaCategoria($conn) {
 		
 		$nombre_categoria=$_POST['categoria'];
 		//var_dump($nombre_categoria);
-		$stmt = $conn->prepare("SELECT ID_CATEGORIA FROM categoria WHERE NOMBRE='$nombre_categoria'");
+		$stmt = $conn->prepare("SELECT ID_CATEGORIA FROM CATEGORIA WHERE NOMBRE='$nombre_categoria'");
 		$stmt->execute();
 		$stmt->setFetchMode(PDO::FETCH_ASSOC);
 		
@@ -128,7 +128,7 @@ function altaCategoria($conn) {
 		$nombre_producto=$_POST['nombre'];
 		$precio=$_POST['precio'];
 		
-		$sql = "INSERT INTO producto (ID_PRODUCTO,NOMBRE,PRECIO,ID_CATEGORIA) VALUES ($id_producto,'$nombre_producto','$precio',$id_categoria)";
+		$sql = "INSERT INTO PRODUCTO (ID_PRODUCTO,NOMBRE,PRECIO,ID_CATEGORIA) VALUES ($id_producto,'$nombre_producto','$precio',$id_categoria)";
 
 		// use exec() because no results are returned
 		$conn->exec($sql);
